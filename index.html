@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenSupport</title>
+  <link rel="stylesheet" href="src/css/main.css">
+  <link rel="icon" type="image/svg+xml" href="src/opensupport_assets/opensupport_icon.svg">
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <a href="#" class="brand">
+        <img src="src/opensupport_assets/opensupport_logo.svg" alt="OpenSupport Logo">
+      </a>
+    </div>
+    <div class="header-actions">
+      <a id="githubBtn" class="github-link" href="https://logreee.github.io/opensupport-app" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+      <div class="lang-switcher">
+        <select id="langSelect">
+          <option value="en">English (EN)</option>
+          <option value="fr">Français (FR)</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <main class="landing-main">
+      <section class="landing-hero">
+        <span class="landing-tag" data-i18n="hero_tag">✦ Projet Libre &amp; Open Source</span>
+        <h1 data-i18n="hero_title">La plateforme d'assistance client pensée pour la simplicité et la vie privée</h1>
+        <p data-i18n="hero_desc">
+          OpenSupport est une solution de support client et de gestion de tickets tout-en-un, moderne, légère et conçue pour être déployée en totale indépendance sur votre propre infrastructure.
+        </p>
+        <div class="landing-cta-group">
+          <a href="https://github.com/logreee/opensupport-app/archive/refs/heads/main.zip" class="btn-landing-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span data-i18n="btn_download">Télécharger &amp; Installer</span>
+          </a>
+          <a href="docs.html" class="btn-landing-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span data-i18n="btn_docs">Consulter la Documentation</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Features Highlights -->
+      <section class="landing-section">
+        <div class="landing-section-header">
+          <h2 data-i18n="feat_title">Fonctionnalités Clés</h2>
+          <p data-i18n="feat_subtitle">Tout ce dont votre équipe a besoin pour assurer un service client fluide.</p>
+        </div>
+        <div class="landing-grid-3">
+          <div class="landing-card">
+            <span class="landing-card-icon">💬</span>
+            <h3 data-i18n="feat_chat_title">Chat en Direct &amp; Suivi</h3>
+            <p data-i18n="feat_chat_desc">Échangez en direct avec vos demandeurs, envoyez des réponses types et suivez l'avancement complet du cycle de résolution.</p>
+          </div>
+          <div class="landing-card">
+            <span class="landing-card-icon">📋</span>
+            <h3 data-i18n="feat_form_title">Éditeur de Formulaires</h3>
+            <p data-i18n="feat_form_desc">Personnalisez les champs de collecte pour chaque équipe grâce à un constructeur visuel intégrant des règles de routage automatique.</p>
+          </div>
+          <div class="landing-card">
+            <span class="landing-card-icon">👥</span>
+            <h3 data-i18n="feat_teams_title">Multi-Équipes &amp; Rôles</h3>
+            <p data-i18n="feat_teams_desc">Organisez vos collaborateurs par pôles, attribuez des postes, organisez des groupes et gérez facilement les plages d'absence.</p>
+          </div>
+          <div class="landing-card">
+            <span class="landing-card-icon">📊</span>
+            <h3 data-i18n="feat_stats_title">Statistiques &amp; Satisfaction</h3>
+            <p data-i18n="feat_stats_desc">Suivez les temps moyens de réponse, les volumes de tickets résolus et mesurez les retours de satisfaction client post-clôture.</p>
+          </div>
+          <div class="landing-card">
+            <span class="landing-card-icon">🔌</span>
+            <h3 data-i18n="feat_api_title">API REST &amp; Intégration iFrame</h3>
+            <p data-i18n="feat_api_desc">Embarquez directement votre formulaire d'assistance sur n'importe quel site internet ou automatisez vos flux grâce à l'API v1.</p>
+          </div>
+          <div class="landing-card">
+            <span class="landing-card-icon">🌍</span>
+            <h3 data-i18n="feat_i18n_title">Internationalisation Native</h3>
+            <p data-i18n="feat_i18n_desc">Prise en charge multi-langue de l'interface et persistance des préférences linguistiques sans friction.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why OpenSupport -->
+      <section class="landing-section">
+        <div class="landing-section-header">
+          <h2 data-i18n="why_title">Pourquoi OpenSupport ?</h2>
+          <p data-i18n="why_subtitle">Les motivations et la philosophie derrière le développement du logiciel.</p>
+        </div>
+        <div class="landing-grid-2">
+          <div class="landing-card landing-highlight-card">
+            <span class="landing-card-icon">🚀</span>
+            <h3 data-i18n="why_oss_title">Expérimentation Open Source</h3>
+            <p data-i18n="why_oss_desc">Le projet est né du désir d'expérimenter et de partager un projet collaboratif open source complet, conçu avec une architecture PHP/MySQL robuste, sans dépendances lourdes et entièrement maîtrisable de bout en bout.</p>
+          </div>
+          <div class="landing-card landing-highlight-card">
+            <span class="landing-card-icon">💸</span>
+            <h3 data-i18n="why_free_title">Alternative Gratuite aux Géants du Secteur</h3>
+            <p data-i18n="why_free_desc">Les logiciels de helpdesk du marché imposent souvent des modèles d'abonnement coûteux à l'agent et verrouillent vos flux. OpenSupport apporte une alternative libre, gratuite et sans restriction d'usage.</p>
+          </div>
+          <div class="landing-card landing-highlight-card">
+            <span class="landing-card-icon">🎨</span>
+            <h3 data-i18n="why_ui_title">Priorité absolue à l'UI et l'UX</h3>
+            <p data-i18n="why_ui_desc">Open source ne signifie pas austère. L'interface d'administration comme le parcours client ont été modélisés pour offrir clarté, fluidité visuelle, réactivité et une prise en main intuitive dès le premier lancement.</p>
+          </div>
+          <div class="landing-card landing-highlight-card">
+            <span class="landing-card-icon">🛡️</span>
+            <h3 data-i18n="why_gdpr_title">RGPD &amp; Souveraineté des Données</h3>
+            <p data-i18n="why_gdpr_desc">Hébergez vos données sur votre serveur sans traçage intrusif. Le respect de la vie privée fait partie intégrante de la conception : export natif des données, purge automatique et outils d'anonymisation intégrés.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Links -->
+      <div class="landing-cta-group">
+        <a href="https://github.com/logreee/opensupport-app/archive/refs/heads/main.zip" class="btn-landing-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span data-i18n="btn_download">Télécharger &amp; Installer</span>
+        </a>
+        <a href="docs.html" class="btn-landing-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          <span data-i18n="btn_docs">Consulter la Documentation</span>
+        </a>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+  </footer>
+
+  <script src="src/js/main.js"></script>
+</body>
+</html>

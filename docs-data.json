@@ -1,0 +1,507 @@
+{
+  "github_url": "https://logreee.github.io/opensupport-app",
+  "fr": {
+    "title": "OpenSupport Docs",
+    "subtitle": "Documentation officielle du logiciel et référence de l'API REST.",
+    "search_placeholder": "Rechercher un guide, un endpoint, un paramètre...",
+    "nav_usage": "Guide d'utilisation",
+    "nav_api": "Référence API",
+    "no_results": "Aucun résultat trouvé pour votre recherche.",
+    "sections": {
+      "requirements_prerequisites": {
+        "category": "Installation & Déploiement",
+        "title": "Prérequis & Exigences système",
+        "content": "Pour exécuter OpenSupport, vous avez besoin d'un serveur web (Apache avec mod_rewrite activé), de PHP 8.1 ou supérieur (PHP 8.3 pris en charge), de MySQL/MariaDB avec support PDO, et d'un serveur de messagerie pour les notifications. Assurez-vous d'avoir les permissions d'écriture sur votre répertoire web."
+      },
+      "installation_process": {
+        "category": "Installation & Déploiement",
+        "title": "Processus d'installation",
+        "content": "- Placez les fichiers d'OpenSupport dans le répertoire de votre serveur web (htdocs ou /var/www/html).\n- Ouvrez votre navigateur et accédez à http://<votre-domaine>/install.\n- Suivez l'assistant d'installation pas à pas pour configurer les identifiants de base de données, les identifiants administrateur et les paramètres système de base."
+      },
+      "web_server_url_rewriting": {
+        "category": "Installation & Déploiement",
+        "title": "Serveur web & Réécriture d'URL",
+        "content": "Assurez-vous que le fichier .htaccess est présent dans le dossier racine pour gérer le routage propre du tableau de bord et des points de terminaison de l'API.\nVérifiez que AllowOverride All est activé dans le fichier httpd.conf d'Apache afin que les directives telles que RewriteEngine On et les règles de routage puissent fonctionner correctement sans générer d'erreurs 500."
+      },
+      "database_migration_maintenance": {
+        "category": "Installation & Déploiement",
+        "title": "Migration & Maintenance de la base de données",
+        "content": "Les tables système telles que users, teams, teams_members, tickets et messages sont initialisées lors de l'installation.\nEffectuez des sauvegardes régulières de la base de données via mysqldump.\nVeillez à ce que les relations de clés étrangères et les index restent intacts lors des migrations de serveur."
+      },
+      "invite_new_members_to_create_an_account": {
+        "category": "Installation & Déploiement",
+        "title": "Inviter de nouveaux membres à créer un compte",
+        "content": "Depuis la page des paramètres d'OpenSupport, vous pouvez inviter une ou plusieurs adresses e-mail à créer un compte sur votre instance OpenSupport :\n- Dans la section « Membres » de la page des paramètres d'OpenSupport, cliquez sur « Ajouter des membres ».\n- Saisissez les adresses e-mail des nouveaux membres à inviter.\n- Une invitation automatique par e-mail sera envoyée en anglais avec un lien direct pour finaliser la création du compte."
+      },
+      "creating_a_team": {
+        "category": "Gestion des équipes",
+        "title": "Créer une équipe",
+        "content": "- Accédez à l'accueil du tableau de bord et cliquez sur « Créer une équipe ».\n- Dans le panneau de gauche, entrez un nom d'équipe unique et cliquez sur « Créer ».\n[IMAGE: src/images/TM_1.png]\n\nUne fois l'équipe créée, vous pouvez accéder à la page des paramètres de l'équipe pour personnaliser ses informations :\n- Personnaliser la couleur de marque (utilisée pour les styles d'accentuation et les modèles d'e-mails),\n- Téléverser un logo personnalisé,\n- Définir le slug de l'URL du formulaire public de soumission de tickets.\n[IMAGE: src/images/TM_2.png]"
+      },
+      "configuring_form_url_custom_branding": {
+        "category": "Gestion des équipes",
+        "title": "Configuration de l'URL du formulaire & Image de marque",
+        "content": "Vous pouvez accéder à la page des paramètres de l'équipe pour personnaliser ses informations :\n- Personnaliser la couleur de marque (utilisée pour les styles d'accentuation et les modèles d'e-mails),\n- Téléverser un logo personnalisé,\n- Définir le slug de l'URL du formulaire public de soumission de tickets.\n[IMAGE: src/images/TM_3.png]"
+      },
+      "form_configuration_team_auto_dispatch_rules": {
+        "category": "Gestion des équipes",
+        "title": "Configuration du formulaire & Règles d'attribution automatique",
+        "content": "Depuis la page des paramètres de l'équipe, vous pouvez accéder à l'éditeur de formulaire interactif pour le personnaliser.\n[IMAGE: src/images/TM_4.png]\n\nDans le panneau de gauche, vous trouverez le bouton Enregistrer et toutes les propriétés associées au champ supplémentaire actuellement sélectionné dans le panneau de droite :\n- Type de champ (texte, e-mail, numéro de téléphone, menu déroulant, case à cocher)\n- Titre du champ\n- Limite de caractères (uniquement pour texte, e-mail et numéro de téléphone)\n- Champ obligatoire\n- Options possibles pour le menu déroulant : cliquez sur « + » pour ajouter une option, définissez son intitulé et configurez l'attribution automatique facultative des tickets à un membre ou à un groupe.\n\nSur la droite, vous trouverez un aperçu de votre formulaire où vous pouvez :\n- Ajouter un champ supplémentaire en cliquant sur le bouton « + »\n- Réorganiser les champs supplémentaires\n- Sélectionner un champ supplémentaire pour modifier ses propriétés"
+      },
+      "conditional_routing_rules": {
+        "category": "Gestion des équipes",
+        "title": "Règles de répartition conditionnel",
+        "content": "Dans le générateur de formulaire, vous pouvez associer des options spécifiques des menus déroulants à des membres ou groupes précis.\nLes soumissions entrantes assigneront automatiquement le ticket en fonction du choix sélectionné par l'utilisateur.\n\nConsultez « Configuration du formulaire & Règles d'attribution automatique » pour plus d'informations."
+      },
+      "manage_pre_defined_messages": {
+        "category": "Gestion des équipes",
+        "title": "Gérer les messages prédéfinis",
+        "content": "- Rendez-vous sur la page des paramètres de l'équipe, dans la section « Messages prédéfinis ».\n- Cliquez sur « Ajouter » pour créer un nouveau message prédéfini (limité à 50 par équipe).\n- Définissez un titre.\n- Rédigez un message prédéfini ; vous pouvez y insérer des variables spéciales :\n'@supportFirstName' => Prénom de l'agent de support connecté,\n'@supportLastName' => Nom de famille de l'agent de support connecté,\n'@supportName' => Prénom et nom de l'agent de support connecté,\n'@supportTeam' => Nom de l'équipe de support,\n'@clientFirstName' => Prénom du client du ticket,\n'@clientLastName' => Nom de famille du client du ticket,\n'@client' => Prénom et nom du client du ticket,\n'@ticketId' => Identifiant du ticket,\n'@ticketName' => Objet du ticket,\n\n- Cliquez sur « Modifier » pour appliquer vos modifications.\n[IMAGE: src/images/TM_5.png]"
+      },
+      "api_token_generation_security": {
+        "category": "Gestion des équipes",
+        "title": "Génération & Sécurité du jeton API",
+        "content": "Dans la page des paramètres de l'équipe, sous la section « Jeton d'accès API », vous pouvez générer ou récupérer votre jeton secret :\n[IMAGE: src/images/TM_6.png]\n\n- Cliquez sur « Générer » pour créer un jeton d'accès API pour votre équipe (si vous en avez déjà un, le bouton sera intitulé « Régénérer »).\n- Ce jeton est requis pour authentifier les requêtes auprès de l'API REST v1 via l'en-tête HTTP Authorization: Bearer <teams_api_token>.\n- Conservez-le en lieu sûr ; régénérer le jeton révoque immédiatement le précédent."
+      },
+      "deleting_a_team": {
+        "category": "Gestion des équipes",
+        "title": "Supprimer une équipe",
+        "content": "Une équipe peut être supprimée depuis la page des paramètres de l'équipe :\n[IMAGE: src/images/TM_7.png]\n\n- En bas de page, dans la section Danger, cliquez sur le bouton « Supprimer l'équipe ».\n- Un modal de confirmation s'ouvre, vous demandant de taper « DELETE » pour confirmer l'action.\n- Cliquez ensuite sur le bouton Supprimer l'équipe pour confirmer l'opération.\n\nLa suppression d'une équipe applique une suppression logique (teams_deleted = 1). Tous les liens avec les membres et les routes de tickets associés deviendront inaccessibles, tout en conservant les journaux d'audit sans suppression physique de l'historique relationnel."
+      },
+      "inviting_a_team_member": {
+        "category": "Gestion des équipes",
+        "title": "Inviter un membre d'équipe",
+        "content": "- Accédez à la page des membres de l'équipe.\n- Cliquez sur le bouton « + » en haut à droite pour inviter un nouveau membre d'équipe.\n- Saisissez l'adresse e-mail de l'agent et définissez son intitulé de poste (ex. : Agent de support, Responsable N2).\n[IMAGE: src/images/TM_8.png]\n- Une invitation par e-mail en anglais lui sera envoyée avec un lien direct pour rejoindre l'espace de l'équipe."
+      },
+      "assigning_positions_group_tags": {
+        "category": "Gestion des équipes",
+        "title": "Attribution des postes & Balises de groupe",
+        "content": "Lors de la gestion du profil d'un membre, sélectionnez le membre de l'équipe pour mettre à jour son titre affiché et lui attribuer des balises de groupe.\n[IMAGE: src/images/TM_9.png]\n\nLes groupes permettent d'acheminer des questions spécifiques du formulaire directement vers les files d'attente d'agents spécialisés."
+      },
+      "removing_a_member": {
+        "category": "Gestion des équipes",
+        "title": "Retirer un membre",
+        "content": "- Accédez à la page des membres de l'équipe.\n- Cliquez sur le bouton de suppression d'un membre.\n- Un modal de confirmation s'ouvre : confirmez votre choix pour retirer le membre de l'équipe.\n\nCela applique une suppression logique (teams_members_deleted = 1). L'utilisateur perdra l'accès aux tickets de l'équipe, mais ses messages historiques et journaux d'activité restent préservés."
+      },
+      "create_an_account": {
+        "category": "Gestion du compte",
+        "title": "Créer un compte",
+        "content": "Pour créer un compte, vous devez être ajouté par un administrateur d'instance OpenSupport ou un administrateur d'équipe.\n- Ouvrez le lien reçu par e-mail.\n- Renseignez les informations de votre compte (nom et mot de passe).\n[IMAGE: src/images/AM_1.png]\n\nSi vous avez été invité par une équipe, vous rejoindrez directement celle-ci."
+      },
+      "manage_your_account": {
+        "category": "Gestion du compte",
+        "title": "Gérer votre compte",
+        "content": "Depuis la page des paramètres de votre compte, vous pouvez :\n- Mettre à jour vos informations personnelles (prénom, nom, adresse e-mail),\n- Modifier votre mot de passe.\n[IMAGE: src/images/AM_2.png]"
+      },
+      "setting_up_absence_schedules": {
+        "category": "Gestion du compte",
+        "title": "Configurer les périodes d'absence",
+        "content": "Les membres de l'équipe peuvent configurer leur statut d'absence dans les paramètres de leur compte :\n- Définissez l'option « Activer l'absence » sur True,\n- Définissez une date et une heure de début,\n- Définissez une date et une heure de fin.\n[IMAGE: src/images/AM_3.png]\n\nLorsqu'il est actif, le système signale l'agent comme indisponible dans l'API et contourne l'attribution automatique des tickets."
+      },
+      "ticket_submission": {
+        "category": "Gestion des tickets",
+        "title": "Soumission d'un ticket",
+        "content": "Les clients soumettent leurs demandes via votre URL publique http://<domaine>/form/<form_url>.\nLe système génère un jeton d'accès sécurisé unique, crée le ticket avec le statut « 0 » (Nouveau), et envoie un e-mail de confirmation contenant un lien d'accès direct."
+      },
+      "managing_ticket_information": {
+        "category": "Gestion des tickets",
+        "title": "Gestion des informations du ticket",
+        "content": "Depuis la page des détails du ticket :\n- Clôturer le ticket : cliquez sur le bouton « Clôturer le ticket », un e-mail de satisfaction sera alors envoyé au client,\n- Consulter les informations de base : sujet, description et réponses aux champs supplémentaires du formulaire,\n- Notes de support : écrivez des notes internes visibles uniquement par les membres du support de l'équipe,\n- Informations client : nom complet et adresse e-mail du client,\n- Agent assigné : modifiez l'agent assigné au ticket,\n- Priorité : modifiez la priorité du ticket (très basse, basse, normale, haute, très haute),\n- Statut : consultez l'état actuel du ticket (nouveau, en cours, fermé),\n- Historique du ticket : consultez la chronologie d'activité (date de création, prise en charge par le support, clôture et avis recueilli).\n[IMAGE: src/images/TiM_1.png]"
+      },
+      "chat_messages": {
+        "category": "Gestion des tickets",
+        "title": "Messages de discussion (chat)",
+        "content": "Depuis la discussion du ticket, les agents de support et les clients peuvent s'envoyer des messages textuels ainsi que des pièces jointes (.png, .jpg, .jpeg, .mp4, .pdf avec une taille maximale définie dans config.php).\n[IMAGE: src/images/TiM_2.png]\n\nPour les agents de support uniquement :\n- Vous pouvez insérer des messages prédéfinis configurés dans les paramètres de l'équipe,\n- Vous pouvez envoyer une demande de fichiers au client."
+      },
+      "file_request_messages": {
+        "category": "Gestion des tickets",
+        "title": "Messages de demande de fichiers",
+        "content": "Depuis la discussion du ticket, les agents de support peuvent envoyer une demande de fichiers au client :\n- Le client voit alors une zone de dépôt où il peut téléverser un ou plusieurs fichiers (.png, .jpg, .jpeg, .mp4, .pdf avec une limite de taille définie dans config.php),\n- L'agent de support voit une invitation en attente des fichiers du client,\n- Une fois les fichiers téléversés, ils apparaissent directement dans la discussion pour les deux interlocuteurs.\n[IMAGE: src/images/TiM_3.png]"
+      },
+      "data_export_account_information": {
+        "category": "Conformité & RGPD",
+        "title": "Export de données : Informations du compte",
+        "content": "Conformément au RGPD, vous pouvez exporter toutes les données associées à votre compte :\n- Rendez-vous sur la page des paramètres de votre compte.\n- Dans la section « Exporter mes données », cliquez sur « Exporter ».\n- Un fichier JSON contenant toutes les informations de votre compte sera téléchargé."
+      },
+      "data_export_team_information": {
+        "category": "Conformité & RGPD",
+        "title": "Export de données : Informations de l'équipe",
+        "content": "Conformément au RGPD, vous pouvez exporter toutes les données associées à une équipe :\n- Rendez-vous sur la page des paramètres de l'équipe.\n- Dans la section « Exporter les données de l'équipe », cliquez sur « Exporter ».\n- Un fichier JSON contenant toutes les données de l'équipe sera téléchargé."
+      },
+      "data_export_support_client_information": {
+        "category": "Conformité & RGPD",
+        "title": "Export de données : Informations du client de support",
+        "content": "Conformément au RGPD, le client d'un ticket peut exporter toutes les données associées à sa demande :\n- Dans l'e-mail de confirmation de soumission du ticket ou dans l'e-mail de notification de message, le client peut cliquer sur le lien « Politique de confidentialité » situé dans le pied de page.\n- Une page dédiée s'ouvre, lui permettant d'exporter toutes ses données sous la forme d'un fichier JSON."
+      },
+      "right_to_erasure_anonymization": {
+        "category": "Conformité & RGPD",
+        "title": "Droit à l'effacement (Anonymisation)",
+        "content": "Traitez les demandes de droit à l'oubli des clients directement depuis le tableau de bord ou via POST /api/v1/privacy/anonymize en précisant confirm: 'DELETE'.\nCette action efface les identifiants personnels, remplace les noms par 'Anonyme', purge la description du ticket ainsi que le corps des messages et supprime les pièces jointes associées."
+      },
+      "retention_automated_cleanup": {
+        "category": "Conformité & RGPD",
+        "title": "Rétention & Nettoyage automatisé",
+        "content": "Une tâche planifiée (cron) quotidienne anonymise automatiquement les données personnelles et supprime les pièces jointes des tickets résolus après une période de rétention de 30 jours."
+      },
+      "api_auth": {
+        "category": "Authentification & API",
+        "title": "Authentification API",
+        "content": "Chaque requête à l'API doit inclure le jeton d'équipe dans l'en-tête HTTP Authorization :",
+        "code": "Authorization: Bearer <teams_api_token>"
+      }
+    },
+    "api_versions": [
+      {
+        "version": "v1",
+        "label": "API Version 1 (Stable)",
+        "endpoints": [
+          {
+            "method": "GET",
+            "path": "/api/v1/tickets",
+            "desc": "Récupérer la liste paginée et filtrée des tickets de l'équipe.",
+            "params": [
+              { "name": "status", "type": "int", "req": false, "desc": "Filtrer par statut : 0 (nouveau), 1 (en cours), 2 (fermé)" },
+              { "name": "assigned_to", "type": "int", "req": false, "desc": "ID de l'agent assigné" },
+              { "name": "priority", "type": "int", "req": false, "desc": "Niveau de priorité (-2 à 2)" },
+              { "name": "limit", "type": "int", "req": false, "desc": "Nombre d'éléments par page (défaut 20)" },
+              { "name": "page", "type": "int", "req": false, "desc": "Numéro de la page (défaut 1)" }
+            ],
+            "example": "// Réponse 200 OK\n{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 42,\n      \"token\": \"abc123...\",\n      \"client\": {\n        \"first_name\": \"Jean\",\n        \"last_name\": \"Dupont\",\n        \"email\": \"jean.dupont@example.com\"\n      },\n      \"subject\": \"Problème d'accès\",\n      \"source\": \"Opensupport form\",\n      \"description\": \"Impossible de me connecter...\",\n      \"status\": 0,\n      \"priority\": 1,\n      \"assigned_to\": 8,\n      \"created_at\": \"2026-09-12 14:30:00\",\n      \"custom_fields\": [\n        { \"question\": \"Système\", \"answer\": \"Windows 11\" }\n      ]\n    }\n  ],\n  \"error\": null\n}"
+          },
+          {
+            "method": "GET",
+            "path": "/api/v1/tickets/{id}",
+            "desc": "Consulter les informations complètes d'un ticket spécifique et l'historique de ses messages.",
+            "params": [
+              { "name": "id", "type": "int", "req": true, "desc": "Identifiant unique du ticket" }
+            ],
+            "example": "// Réponse 200 OK\n{\n  \"success\": true,\n  \"data\": {\n    \"id\": 42,\n    \"token\": \"abc123...\",\n    \"client\": {\n      \"first_name\": \"Jean\",\n      \"last_name\": \"Dupont\",\n      \"email\": \"jean.dupont@example.com\"\n    },\n    \"subject\": \"Problème d'accès\",\n    \"source\": \"Opensupport form\",\n    \"description\": \"Impossible de me connecter...\",\n    \"admin_notes\": \"Client prioritaire\",\n    \"messages\": [\n      {\n        \"id\": 105,\n        \"sender_type\": 1,\n        \"content\": \"Bonjour, voici des précisions...\",\n        \"attachments\": [],\n        \"created_at\": \"2026-09-12 14:32:00\"\n      }\n    ]\n  },\n  \"error\": null\n}"
+          },
+          {
+            "method": "POST",
+            "path": "/api/v1/tickets",
+            "desc": "Créer un nouveau ticket avec prise en charge de la répartition conditionnel et notification email facultative.",
+            "params": [
+              { "name": "first_name", "type": "string", "req": true, "desc": "Prénom du demandeur" },
+              { "name": "last_name", "type": "string", "req": true, "desc": "Nom du demandeur" },
+              { "name": "email", "type": "string", "req": true, "desc": "Adresse email valide de contact" },
+              { "name": "subject", "type": "string", "req": true, "desc": "Objet de la demande" },
+              { "name": "description", "type": "string", "req": true, "desc": "Description détaillée de la demande" },
+              { "name": "priority", "type": "int", "req": false, "desc": "Niveau de priorité (-2 à 2, défaut 0)" },
+              { "name": "assigned_to", "type": "int|null", "req": false, "desc": "ID de l'agent auquel assigner le ticket" },
+              { "name": "admin_notes", "type": "string", "req": false, "desc": "Notes internes visibles par l'équipe" },
+              { "name": "custom_fields", "type": "array<object>", "req": false, "desc": "Paires de questions/réponses additionnelles" },
+              { "name": "source", "type": "string", "req": false, "desc": "Nom de la source d'origine du ticket (ex: 'contact form enterprise website'). Défaut: 'API'" },
+              { "name": "notify_client", "type": "bool", "req": false, "desc": "Envoyer l'email de confirmation au client (défaut true)" }
+            ],
+            "example": "{\n  \"first_name\": \"Claire\",\n  \"last_name\": \"Dubois\",\n  \"email\": \"claire@example.com\",\n  \"subject\": \"Facture manquante\",\n  \"description\": \"Je ne retrouve pas la facture d'août.\",\n  \"priority\": 1,\n  \"notify_client\": true\n}"
+          },
+          {
+            "method": "PATCH",
+            "path": "/api/v1/tickets/{id}",
+            "desc": "Mettre à jour partiellement les propriétés d'un ticket (statut, assignation, priorité, notes).",
+            "params": [
+              { "name": "id", "type": "int", "req": true, "desc": "Identifiant du ticket à modifier" },
+              { "name": "status", "type": "int", "req": false, "desc": "Nouveau statut : 0 (nouveau), 1 (en cours), 2 (fermé)" },
+              { "name": "priority", "type": "int", "req": false, "desc": "Niveau de priorité (-2 à 2)" },
+              { "name": "assigned_to", "type": "int|null", "req": false, "desc": "ID de l'agent assigné ou null pour désassigner" },
+              { "name": "admin_notes", "type": "string", "req": false, "desc": "Mise à jour des notes internes" }
+            ],
+            "example": "{\n  \"status\": 1,\n  \"assigned_to\": 12,\n  \"priority\": 2\n}"
+          },
+          {
+            "method": "POST",
+            "path": "/api/v1/tickets/{id}/messages",
+            "desc": "Ajouter un message au fil d'un ticket (support ou client) avec déclenchement d'une alerte email.",
+            "params": [
+              { "name": "id", "type": "int", "req": true, "desc": "Identifiant du ticket concerné" },
+              { "name": "sender_type", "type": "int", "req": true, "desc": "Type d'émetteur : 0 (Support) ou 1 (Client)" },
+              { "name": "content", "type": "string", "req": true, "desc": "Texte du message à publier" },
+              { "name": "notify", "type": "bool", "req": false, "desc": "Notifier le destinataire par email (défaut true)" }
+            ],
+            "example": "{\n  \"sender_type\": 0,\n  \"content\": \"Votre problème a bien été pris en compte par notre équipe technique.\",\n  \"notify\": true\n}"
+          },
+          {
+            "method": "GET",
+            "path": "/api/v1/members",
+            "desc": "Récupérer la liste des collaborateurs membres de l'équipe, leurs groupes rattachés et le détail de leur période d'absence.",
+            "params": [],
+            "example": "// Réponse 200 OK\n{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 5,\n      \"first_name\": \"Alice\",\n      \"last_name\": \"Martin\",\n      \"email\": \"alice@opensupport.local\",\n      \"position\": \"Support N2\",\n      \"groups\": [\"Niveau 2\", \"Facturation\"],\n      \"absence\": {\n        \"is_absent\": true,\n        \"period\": {\n          \"start\": \"2026-09-14 08:00:00\",\n          \"end\": \"2026-09-21 18:00:00\"\n        }\n      }\n    },\n    {\n      \"id\": 8,\n      \"first_name\": \"Bob\",\n      \"last_name\": \"Lemoine\",\n      \"email\": \"bob@opensupport.local\",\n      \"position\": \"Agent Support\",\n      \"groups\": [\"Général\"],\n      \"absence\": {\n        \"is_absent\": false,\n        \"period\": null\n      }\n    }\n  ],\n  \"error\": null\n}"
+          },
+          {
+            "method": "POST",
+            "path": "/api/v1/members/invite",
+            "desc": "Inviter un nouveau collaborateur par email à intégrer l'équipe (notification envoyée en anglais).",
+            "params": [
+              { "name": "email", "type": "string", "req": true, "desc": "Adresse email professionnelle de l'invité" },
+              { "name": "position", "type": "string", "req": false, "desc": "Poste ou rôle affiché au sein de l'équipe (défaut 'Support Agent')" }
+            ],
+            "example": "{\n  \"email\": \"new.member@example.com\",\n  \"position\": \"Support Agent\"\n}"
+          },
+          {
+            "method": "POST",
+            "path": "/api/v1/privacy/anonymize",
+            "desc": "Anonymiser définitivement les données personnelles d'un client et purger ses messages et tickets (RGPD).",
+            "params": [
+              { "name": "email", "type": "string", "req": true, "desc": "Adresse email du client à anonymiser" },
+              { "name": "confirm", "type": "string", "req": true, "desc": "Doit être exactement 'DELETE' pour confirmer" }
+            ],
+            "example": "{\n  \"email\": \"client.rgpd@example.com\",\n  \"confirm\": \"DELETE\"\n}"
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "OpenSupport Docs",
+    "subtitle": "Official software documentation and REST API reference.",
+    "search_placeholder": "Search guides, endpoints, parameters...",
+    "nav_usage": "User Guide",
+    "nav_api": "API Reference",
+    "no_results": "No results found matching your search query.",
+    "sections": {
+      "requirements_prerequisites": {
+        "category": "Instance Setup & Deployment",
+        "title": "Requirements & Prerequisites",
+        "content": "To run OpenSupport, you need a web server (Apache with mod_rewrite enabled), PHP 8.1 or higher (PHP 8.3 supported), MySQL/MariaDB with PDO support, and a mail server for notifications. Ensure write permissions on your web directory."
+      },
+      "installation_process": {
+        "category": "Instance Setup & Deployment",
+        "title": "Installation Process",
+        "content": "- Place the OpenSupport files in your web server directory (htdocs or /var/www/html).\n- Open your browser and navigate to http://<your-domain>/install.\n- Follow the step-by-step installation wizard to set up database credentials, administrator credentials, and baseline system settings."
+      },
+      "web_server_url_rewriting": {
+        "category": "Instance Setup & Deployment",
+        "title": "Web Server & URL Rewriting",
+        "content": "Ensure .htaccess is present in the root folder to handle clean routing for both the dashboard and API endpoints.\nVerify that AllowOverride All is enabled in Apache's httpd.conf so directives like RewriteEngine On and routing rules can function properly without throwing 500 errors."
+      },
+      "database_migration_maintenance": {
+        "category": "Instance Setup & Deployment",
+        "title": "Database Migration & Maintenance",
+        "content": "System tables such as users, teams, teams_members, tickets, and messages are initialized during installation.\nKeep regular database backups via mysqldump.\nEnsure foreign key relationships and indexes remain intact when running server migrations."
+      },
+      "invite_new_members_to_create_an_account": {
+        "category": "Instance Setup & Deployment",
+        "title": "Invite new members to create an account",
+        "content": "From the OpenSupport settings page, you can invite one or multiple email addresses to create an account on your OpenSupport instance:\n- In the \"Members\" section of the OpenSupport settings page, click on \"Add members\".\n- Enter the email addresses of the new members to invite.\n- An automated email invitation in English will be sent with a direct link to finalize account creation."
+      },
+      "creating_a_team": {
+        "category": "Teams Management",
+        "title": "Creating a Team",
+        "content": "- Navigate to Dashboard home and click \"Create Team\".\n- On the left panel, enter a unique team name and click \"Create\".\n[IMAGE: src/images/TM_1.png]\n\nAfter the team is created, you can navigate to the team settings page to customize information about your team:\n- Customize the branding color (used for accent styles and email templates),\n- Upload a custom logo,\n- Define the public ticket submission form URL slug.\n[IMAGE: src/images/TM_2.png]"
+      },
+      "configuring_form_url_custom_branding": {
+        "category": "Teams Management",
+        "title": "Configuring Form URL & Custom Branding",
+        "content": "You can navigate to the team settings page to customize information about your team:\n- Customize the branding color (used for accent styles and email templates),\n- Upload a custom logo,\n- Define the public ticket submission form URL slug.\n[IMAGE: src/images/TM_3.png]"
+      },
+      "form_configuration_team_auto_dispatch_rules": {
+        "category": "Teams Management",
+        "title": "Form configuration & team auto-dispatch rules",
+        "content": "From the team settings page, you can access the interactive form builder to customize it.\n[IMAGE: src/images/TM_4.png]\n\nOn the left panel, you will find the Save button and all properties linked to an additional field currently selected on the right panel:\n- Field type (text, email, phone number, dropdown, checkbox)\n- Field title\n- Character limit (only for text, email, and phone number)\n- Mandatory field\n- Possible options for dropdown: click on \"+\" to add an option, define the option title, and configure optional auto-dispatch of tickets to a member or a group.\n\nOn the right, you will find a preview of your form where you can:\n- Add an additional field by clicking on the \"+\" button\n- Reorder additional fields\n- Select an additional field to modify its properties"
+      },
+      "conditional_routing_rules": {
+        "category": "Teams Management",
+        "title": "Conditional Routing Rules",
+        "content": "In the form builder, you can map specific options from dropdowns to specific members or groups.\nInbound submissions will automatically assign the ticket based on the user's selected choice.\n\nCheck \"Form configuration & team auto-dispatch rules\" for more information."
+      },
+      "manage_pre_defined_messages": {
+        "category": "Teams Management",
+        "title": "Manage pre-defined messages",
+        "content": "- Go to the team settings page, under the \"Pre-defined messages\" section.\n- Click on \"Add\" to add a new pre-defined message (limited to 50 per team).\n- Define a title.\n- Define a pre-defined message; you can add special variables to it:\n'@supportFirstName' => First name of connected support agent,\n'@supportLastName' => Last name of connected support agent,\n'@supportName' => First and last name of connected support agent,\n'@supportTeam' => Support team name,\n'@clientFirstName' => First name of ticket's client,\n'@clientLastName' => Last name of ticket's client,\n'@client' => First and last name of ticket's client,\n'@ticketId' => Ticket ID,\n'@ticketName' => Ticket subject,\n\n- Click on \"Modify\" to apply your modifications.\n[IMAGE: src/images/TM_5.png]"
+      },
+      "api_token_generation_security": {
+        "category": "Teams Management",
+        "title": "API Token Generation & Security",
+        "content": "From the team settings page, under the \"API Access Token\" section, you can generate or retrieve your secret token:\n[IMAGE: src/images/TM_6.png]\n\n- Click on \"Generate\" to generate an API access token for your team (if you already have one, the button will be named \"Regenerate\").\n- This token is required to authenticate requests against the REST API v1 via the HTTP header Authorization: Bearer <teams_api_token>.\n- Store it securely; regenerating it immediately revokes the prior token."
+      },
+      "deleting_a_team": {
+        "category": "Teams Management",
+        "title": "Deleting a Team",
+        "content": "A team can be deleted from the team settings page:\n[IMAGE: src/images/TM_7.png]\n\n- At the bottom of the page, in the Danger section, click on the \"Delete Team\" button.\n- A confirmation modal will open, asking you to type \"DELETE\" to confirm the action.\n- Then, click on the Delete Team button to confirm the operation.\n\nDeleting a team applies a soft delete (teams_deleted = 1). All associated member bindings and ticket routes will become inaccessible, preserving audit logs without hard-deleting relational history."
+      },
+      "inviting_a_team_member": {
+        "category": "Teams Management",
+        "title": "Inviting a Team Member",
+        "content": "- Go to the team members page.\n- Click on the \"+\" button on the top right to invite a new team member.\n- Input the agent's email address and define their position title (e.g. Support Agent, Tier 2 Lead).\n[IMAGE: src/images/TM_8.png]\n- An email invitation in English will be sent to them with a direct link to join the team workspace."
+      },
+      "assigning_positions_group_tags": {
+        "category": "Teams Management",
+        "title": "Assigning Positions & Group Tags",
+        "content": "When managing a member's profile, select the team member to update their displayed title and assign group tags.\n[IMAGE: src/images/TM_9.png]\n\nGroups allow routing of specific form questions directly to specialized agent queues."
+      },
+      "removing_a_member": {
+        "category": "Teams Management",
+        "title": "Removing a Member",
+        "content": "- Go to the team members page.\n- Click on the delete button of a member.\n- A confirmation modal will open: confirm your choice to remove the member from the team.\n\nThis applies a soft delete (teams_members_deleted = 1). The user will lose access to the team's inbox, but their historical messages and activity logs remain preserved."
+      },
+      "create_an_account": {
+        "category": "Account Management",
+        "title": "Create an account",
+        "content": "To create an account, you must be added by an OpenSupport instance administrator or a team administrator.\n- Open the link in the email.\n- Complete account information (name and password).\n[IMAGE: src/images/AM_1.png]\n\nIf you were invited by a team, you will join this team directly."
+      },
+      "manage_your_account": {
+        "category": "Account Management",
+        "title": "Manage your account",
+        "content": "From your account settings page, you can:\n- Update personal information (first name, last name, email address),\n- Modify your password.\n[IMAGE: src/images/AM_2.png]"
+      },
+      "setting_up_absence_schedules": {
+        "category": "Account Management",
+        "title": "Setting up absence schedules",
+        "content": "Team members can configure their absence status under their account settings:\n- Set the \"Enable absence\" option to True,\n- Define a start date and time,\n- Define an end date and time.\n[IMAGE: src/images/AM_3.png]\n\nWhen active, the system tags the agent as unavailable in the API and bypasses auto-assignment."
+      },
+      "ticket_submission": {
+        "category": "Tickets Management",
+        "title": "Ticket submission",
+        "content": "Customers submit inquiries through your public URL http://<domain>/form/<form_url>.\nThe system generates a unique secure access token, creates the ticket with status \"0\" (New), and sends a confirmation email containing a direct access link."
+      },
+      "managing_ticket_information": {
+        "category": "Tickets Management",
+        "title": "Managing ticket information",
+        "content": "From the ticket details page:\n- Close the ticket: click on the \"Close the ticket\" button, a satisfaction feedback email will be sent to the customer,\n- View basic information: subject, description, and custom fields answers from the form,\n- Support notes: write internal notes visible only to the team's support members,\n- Client information: full name and email address of the customer,\n- Assigned agent: modify the agent assigned to the ticket,\n- Priority: modify ticket priority (very low, low, normal, high, very high),\n- Status: check current ticket state (new, in progress, closed),\n- Ticket history: view activity timeline (creation date, support handling, closure, and feedback collected).\n[IMAGE: src/images/TiM_1.png]"
+      },
+      "chat_messages": {
+        "category": "Tickets Management",
+        "title": "Chat messages",
+        "content": "From the ticket chat, support agents and clients can send text messages to each other as well as attachments (.png, .jpg, .jpeg, .mp4, .pdf with a maximum size defined in config.php).\n[IMAGE: src/images/TiM_2.png]\n\nFor support agents only:\n- You can insert pre-defined messages configured in the team settings,\n- You can send a file request to the client."
+      },
+      "file_request_messages": {
+        "category": "Tickets Management",
+        "title": "File request messages",
+        "content": "From the ticket chat, support agents can send a file request to the client:\n- The client sees a dropzone where they can upload one or multiple files (.png, .jpg, .jpeg, .mp4, .pdf with a size limit defined in config.php),\n- The support agent sees a prompt waiting for client files,\n- Once files are uploaded, they appear directly in the chat for both parties.\n[IMAGE: src/images/TiM_3.png]"
+      },
+      "data_export_account_information": {
+        "category": "GDPR & Privacy",
+        "title": "Data export: Account information",
+        "content": "In compliance with GDPR, you can export all data associated with your account:\n- Go to your account settings page.\n- Under the \"Export my data\" section, click on \"Export\".\n- A JSON file containing all your account information will be downloaded."
+      },
+      "data_export_team_information": {
+        "category": "GDPR & Privacy",
+        "title": "Data export: Team information",
+        "content": "In compliance with GDPR, you can export all data associated with a team:\n- Go to the team settings page.\n- Under the \"Export team data\" section, click on \"Export\".\n- A JSON file containing all team data will be downloaded."
+      },
+      "data_export_support_client_information": {
+        "category": "GDPR & Privacy",
+        "title": "Data export: Support client information",
+        "content": "In compliance with GDPR, a ticket's client can export all data associated with their inquiry:\n- In the ticket submission confirmation email or in the message notification email, the client can click on the \"Privacy Policy\" link in the footer.\n- A dedicated page opens, allowing them to export all their data as a JSON file."
+      },
+      "right_to_erasure_anonymization": {
+        "category": "GDPR & Privacy",
+        "title": "Right to Erasure (Anonymization)",
+        "content": "Process client privacy requests directly via the dashboard or through POST /api/v1/privacy/anonymize using confirm: 'DELETE'.\nThis wipes personal identifiers, overwrites names with 'Anonyme', scrubs ticket descriptions as well as message bodies, and purges stored attachments."
+      },
+      "retention_automated_cleanup": {
+        "category": "GDPR & Privacy",
+        "title": "Retention & Automated Cleanup",
+        "content": "An automated daily cron routine anonymizes personal contact records and purges stored file attachments for inquiries closed for more than 30 days."
+      },
+      "api_auth": {
+        "category": "Authentication & API",
+        "title": "API Authentication",
+        "content": "Every HTTP request directed to team endpoints must carry the team token inside the Authorization header:",
+        "code": "Authorization: Bearer <teams_api_token>"
+      }
+    },
+    "api_versions": [
+      {
+        "version": "v1",
+        "label": "API Version 1 (Stable)",
+        "endpoints": [
+          {
+            "method": "GET",
+            "path": "/api/v1/tickets",
+            "desc": "Fetch a paginated and filtered list of team tickets.",
+            "params": [
+              { "name": "status", "type": "int", "req": false, "desc": "Filter by status: 0 (new), 1 (in progress), 2 (closed)" },
+              { "name": "assigned_to", "type": "int", "req": false, "desc": "Assigned agent user ID" },
+              { "name": "priority", "type": "int", "req": false, "desc": "Priority level (-2 to 2)" },
+              { "name": "limit", "type": "int", "req": false, "desc": "Items per page (default 20)" },
+              { "name": "page", "type": "int", "req": false, "desc": "Page number (default 1)" }
+            ],
+            "example": "// Response 200 OK\n{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 42,\n      \"token\": \"abc123...\",\n      \"client\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"email\": \"john.doe@example.com\"\n      },\n      \"subject\": \"Access issue\",\n      \"source\": \"Opensupport form\",\n      \"description\": \"Cannot sign into account...\",\n      \"status\": 0,\n      \"priority\": 1,\n      \"assigned_to\": 8,\n      \"created_at\": \"2026-09-12 14:30:00\",\n      \"custom_fields\": [\n        { \"question\": \"OS\", \"answer\": \"Windows 11\" }\n      ]\n    }\n  ],\n  \"error\": null\n}"
+          },
+          {
+            "method": "GET",
+            "path": "/api/v1/tickets/{id}",
+            "desc": "Retrieve comprehensive details of a single ticket including message thread history.",
+            "params": [
+              { "name": "id", "type": "int", "req": true, "desc": "Unique ticket ID" }
+            ],
+            "example": "// Response 200 OK\n{\n  \"success\": true,\n  \"data\": {\n    \"id\": 42,\n    \"token\": \"abc123...\",\n    \"client\": {\n      \"first_name\": \"John\",\n      \"last_name\": \"Doe\",\n      \"email\": \"john.doe@example.com\"\n    },\n    \"subject\": \"Access issue\",\n    \"source\": \"Opensupport form\",\n    \"description\": \"Cannot sign into account...\",\n    \"admin_notes\": \"Priority customer\",\n    \"messages\": [\n      {\n        \"id\": 105,\n        \"sender_type\": 1,\n        \"content\": \"Hello, here are the requested details...\",\n        \"attachments\": [],\n        \"created_at\": \"2026-09-12 14:32:00\"\n      }\n    ]\n  },\n  \"error\": null\n}"
+          },
+          {
+            "method": "POST",
+            "path": "/api/v1/tickets",
+            "desc": "Create a new ticket with custom fields support and optional notification email.",
+            "params": [
+              { "name": "first_name", "type": "string", "req": true, "desc": "Requester first name" },
+              { "name": "last_name", "type": "string", "req": true, "desc": "Requester last name" },
+              { "name": "email", "type": "string", "req": true, "desc": "Valid contact email address" },
+              { "name": "subject", "type": "string", "req": true, "desc": "Ticket subject headline" },
+              { "name": "description", "type": "string", "req": true, "desc": "Detailed problem description" },
+              { "name": "priority", "type": "int", "req": false, "desc": "Priority level (-2 to 2, default 0)" },
+              { "name": "assigned_to", "type": "int|null", "req": false, "desc": "Assignee user ID" },
+              { "name": "admin_notes", "type": "string", "req": false, "desc": "Internal notes visible to agents" },
+              { "name": "custom_fields", "type": "array<object>", "req": false, "desc": "Custom form question/answer pairs" },
+              { "name": "source", "type": "string", "req": false, "desc": "Name of the ticket's original source (e.g., 'contact form enterprise website'). Default: 'API'" },
+              { "name": "notify_client", "type": "bool", "req": false, "desc": "Send confirmation email to client (default true)" }
+            ],
+            "example": "{\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Doe\",\n  \"email\": \"jane@example.com\",\n  \"subject\": \"Missing Invoice\",\n  \"description\": \"Unable to locate August statement.\",\n  \"priority\": 1,\n  \"notify_client\": true\n}"
+          },
+          {
+            "method": "PATCH",
+            "path": "/api/v1/tickets/{id}",
+            "desc": "Partially update ticket attributes such as status, assignee, priority, or internal notes.",
+            "params": [
+              { "name": "id", "type": "int", "req": true, "desc": "Target ticket identifier" },
+              { "name": "status", "type": "int", "req": false, "desc": "Updated status: 0 (new), 1 (in progress), 2 (closed)" },
+              { "name": "priority", "type": "int", "req": false, "desc": "Updated priority (-2 to 2)" },
+              { "name": "assigned_to", "type": "int|null", "req": false, "desc": "Agent ID to assign, or null to unassign" },
+              { "name": "admin_notes", "type": "string", "req": false, "desc": "Internal staff notes update" }
+            ],
+            "example": "{\n  \"status\": 1,\n  \"assigned_to\": 12,\n  \"priority\": 2\n}"
+          },
+          {
+            "method": "POST",
+            "path": "/api/v1/tickets/{id}/messages",
+            "desc": "Post a new message to a ticket conversation thread and optionally dispatch email notifications.",
+            "params": [
+              { "name": "id", "type": "int", "req": true, "desc": "Target ticket identifier" },
+              { "name": "sender_type", "type": "int", "req": true, "desc": "Author type: 0 (Support) or 1 (Client)" },
+              { "name": "content", "type": "string", "req": true, "desc": "Text content of the message" },
+              { "name": "notify", "type": "bool", "req": false, "desc": "Trigger outbound notification email (default true)" }
+            ],
+            "example": "{\n  \"sender_type\": 0,\n  \"content\": \"Our team is actively investigating this issue.\",\n  \"notify\": true\n}"
+          },
+          {
+            "method": "GET",
+            "path": "/api/v1/members",
+            "desc": "List registered team agents, their assigned groups, role titles, and detailed absence windows.",
+            "params": [],
+            "example": "// Response 200 OK\n{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 5,\n      \"first_name\": \"Alice\",\n      \"last_name\": \"Martin\",\n      \"email\": \"alice@opensupport.local\",\n      \"position\": \"Support Tier 2\",\n      \"groups\": [\"Tier 2\", \"Billing\"],\n      \"absence\": {\n        \"is_absent\": true,\n        \"period\": {\n          \"start\": \"2026-09-14 08:00:00\",\n          \"end\": \"2026-09-21 18:00:00\"\n        }\n      }\n    },\n    {\n      \"id\": 8,\n      \"first_name\": \"Bob\",\n      \"last_name\": \"Lemoine\",\n      \"email\": \"bob@opensupport.local\",\n      \"position\": \"Support Specialist\",\n      \"groups\": [\"General\"],\n      \"absence\": {\n        \"is_absent\": false,\n        \"period\": null\n      }\n    }\n  ],\n  \"error\": null\n}"
+          },
+          {
+            "method": "POST",
+            "path": "/api/v1/members/invite",
+            "desc": "Invite a new collaborator to join the team workspace via email (sent in English).",
+            "params": [
+              { "name": "email", "type": "string", "req": true, "desc": "Work email address of the invitee" },
+              { "name": "position", "type": "string", "req": false, "desc": "Assigned team role or position (default 'Support Agent')" }
+            ],
+            "example": "{\n  \"email\": \"new.member@example.com\",\n  \"position\": \"Support Agent\"\n}"
+          },
+          {
+            "method": "POST",
+            "path": "/api/v1/privacy/anonymize",
+            "desc": "Permanently anonymize customer tickets, wipe associated message contents, and purge personal data (GDPR Right to Erasure).",
+            "params": [
+              { "name": "email", "type": "string", "req": true, "desc": "Target client email address to wipe" },
+              { "name": "confirm", "type": "string", "req": true, "desc": "Must be set to 'DELETE' to confirm deletion" }
+            ],
+            "example": "{\n  \"email\": \"client.gdpr@example.com\",\n  \"confirm\": \"DELETE\"\n}"
+          }
+        ]
+      }
+    ]
+  }
+}

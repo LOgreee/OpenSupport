@@ -327,6 +327,10 @@ nav.sidebar a:hover {
 
 main { min-width: 0; }
     
+iframe{
+  aspect-ratio: 16/9;
+  border-radius: 1em;
+}
 .doc-hero {
     margin-bottom: 32px;
     padding-bottom: 24px;
